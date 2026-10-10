@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,oklch(1_0_0/0.08),transparent_65%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,oklch(0.98_0.012_80/0.6),transparent_65%)]"
       />
       <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 text-center md:pt-28">
         <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
@@ -30,7 +30,7 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="#contacto"
-            className="group inline-flex h-13 items-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[0_0_40px_-8px_oklch(1_0_0/0.45)] transition-all hover:bg-primary/90"
+            className="group inline-flex h-13 items-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[0_12px_32px_-10px_oklch(0.27_0.025_55/0.55)] transition-all hover:bg-primary/90"
           >
             Agendar Demonstração
             <ArrowRight
