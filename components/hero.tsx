@@ -17,14 +17,13 @@ export function Hero() {
         </p>
 
         <h1 className="mx-auto mt-8 max-w-4xl text-balance font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
-          Ajudamos marcas de mobiliário a{' '}
-          <em className="text-muted-foreground">elevar a experiência de compra</em> no seu comércio
-          online.
+          <em className="text-muted-foreground">Eleve</em> a experiência de compra dos seus
+          clientes.
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-          A tecnologia de Realidade Aumentada (AR) nativa que permite aos seus clientes testarem os
-          móveis em casa, sem precisarem de instalar aplicações.
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl leading-relaxed text-muted-foreground md:text-2xl">
+          Ajudamos marcas de mobiliário a aumentar conversões e reduzir devoluções através de
+          Realidade Aumentada nativa.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
