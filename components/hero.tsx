@@ -17,8 +17,9 @@ export function Hero() {
         </p>
 
         <h1 className="mx-auto mt-8 max-w-4xl text-balance font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
-          Ajudamos marcas de mobiliário a <em className="text-muted-foreground">duplicar vendas</em> e
-          reduzir devoluções.
+          Ajudamos marcas de mobiliário a{' '}
+          <em className="text-muted-foreground">elevar a experiência de compra</em> no seu comércio
+          online.
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">

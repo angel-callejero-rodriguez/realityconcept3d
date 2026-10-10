@@ -52,7 +52,7 @@ export function HowItWorks() {
         <div className="overflow-hidden rounded-3xl border border-border bg-card">
           <img
             src="/images/ar-showcase.png"
-            alt="Telemóvel a mostrar um cadeirão de veludo em Realidade Aumentada numa sala minimalista"
+            alt="Mão a segurar um telemóvel que mostra um sofá em Realidade Aumentada num espaço da sala que, na vida real, está vazio"
             className="aspect-[4/5] size-full object-cover"
             loading="lazy"
           />
