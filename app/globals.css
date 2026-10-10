@@ -69,10 +69,16 @@
     @apply bg-background text-foreground font-sans;
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.98 0.012 80 / 0.7), transparent 70%),
-      linear-gradient(oklch(0.3 0.03 55 / 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.3 0.03 55 / 0.045) 1px, transparent 1px);
+      radial-gradient(ellipse 120% 80% at 50% 120%, oklch(0.55 0.04 60 / 0.12), transparent 70%),
+      repeating-linear-gradient(0deg, oklch(0.35 0.03 55 / 0.035) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, oklch(0.35 0.03 55 / 0.03) 0 1px, transparent 1px 4px),
+      linear-gradient(oklch(0.3 0.03 55 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.3 0.03 55 / 0.05) 1px, transparent 1px);
     background-size:
       100% 100%,
+      100% 100%,
+      auto,
+      auto,
       64px 64px,
       64px 64px;
     background-attachment: fixed;
@@ -83,9 +89,11 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.18;
+    opacity: 0.32;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.05' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='0.55'/%3E%3C/svg%3E");
   }
   body > * {
     position: relative;
