@@ -27,7 +27,7 @@ export function LegalPage({
           <ArrowLeft className="size-4" aria-hidden="true" />
           Voltar ao início
         </Link>
-        <h1 className="mt-8 font-serif text-5xl tracking-tight md:text-6xl">{title}</h1>
+        <h1 className="mt-8 font-semibold text-5xl tracking-tight md:text-6xl">{title}</h1>
         <p className="mt-4 text-sm text-muted-foreground">Última atualização: {updated}</p>
         <p className="mt-10 leading-relaxed text-muted-foreground">{intro}</p>
 

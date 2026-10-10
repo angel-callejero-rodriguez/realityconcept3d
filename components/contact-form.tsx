@@ -50,7 +50,7 @@ export function ContactForm() {
         className="flex min-h-[420px] flex-col items-center justify-center gap-4 text-center"
       >
         <CheckCircle2 className="size-10" strokeWidth={1.5} aria-hidden="true" />
-        <h3 className="font-serif text-3xl tracking-tight">Pedido recebido</h3>
+        <h3 className="font-semibold text-3xl tracking-tight">Pedido recebido</h3>
         <p className="max-w-sm leading-relaxed text-muted-foreground">{state.message}</p>
       </div>
     )

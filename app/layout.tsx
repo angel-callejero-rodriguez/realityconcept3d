@@ -1,20 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { CookieBanner } from '@/components/cookie-banner'
 import './globals.css'
 
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-})
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Reality Concept 3D — Realidade Aumentada para Mobiliário de Luxo',
+    default: 'Reality Concept 3D — Realidade Aumentada para Mobiliário',
     template: '%s | Reality Concept 3D',
   },
   description:
@@ -47,7 +41,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#e9e0d3',
+  themeColor: '#0e0f11',
 }
 
 export default function RootLayout({
@@ -56,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-PT" className={`${manrope.variable} ${cormorant.variable}`}>
+    <html lang="pt-PT" className={`${inter.variable} dark bg-background`}>
       <body className="antialiased">
         {children}
         <CookieBanner />

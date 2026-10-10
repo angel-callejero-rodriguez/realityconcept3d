@@ -35,7 +35,7 @@ export function Faq() {
           <p className="text-sm text-muted-foreground">Perguntas frequentes</p>
           <h2
             id="faq-title"
-            className="mt-3 text-balance font-serif text-4xl leading-tight tracking-tight md:text-5xl"
+            className="mt-3 text-balance font-semibold text-4xl leading-tight tracking-tight md:text-5xl"
           >
             Tudo o que precisa de saber.
           </h2>

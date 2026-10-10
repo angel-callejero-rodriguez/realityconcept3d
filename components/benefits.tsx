@@ -29,7 +29,7 @@ export function Benefits() {
           <p className="text-sm text-muted-foreground">Vantagens</p>
           <h2
             id="vantagens-title"
-            className="mt-3 text-balance font-serif text-4xl leading-tight tracking-tight md:text-5xl"
+            className="mt-3 text-balance font-semibold text-4xl leading-tight tracking-tight md:text-5xl"
           >
             Uma experiência de showroom, diretamente na casa do seu cliente.
           </h2>

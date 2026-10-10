@@ -39,7 +39,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/#contacto"
-            className="hidden h-9 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85 sm:inline-flex"
+            className="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/85 sm:inline-flex"
           >
             Agendar Demonstração
           </Link>
@@ -77,7 +77,7 @@ export function SiteHeader() {
             <Link
               href="/#contacto"
               onClick={() => setOpen(false)}
-              className="flex h-11 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground"
+              className="flex h-11 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground"
             >
               Agendar Demonstração
             </Link>

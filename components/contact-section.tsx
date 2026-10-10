@@ -32,7 +32,7 @@ export function ContactSection() {
           <p className="text-sm text-muted-foreground">Contacto</p>
           <h2
             id="contacto-title"
-            className="mt-3 text-balance font-serif text-4xl leading-tight tracking-tight md:text-5xl"
+            className="mt-3 text-balance font-semibold text-4xl leading-tight tracking-tight md:text-5xl"
           >
             Veja os seus próprios produtos em Realidade Aumentada.
           </h2>

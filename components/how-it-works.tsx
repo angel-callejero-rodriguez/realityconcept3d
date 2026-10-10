@@ -31,7 +31,7 @@ export function HowItWorks() {
           <p className="text-sm text-muted-foreground">Como funciona</p>
           <h2
             id="como-funciona-title"
-            className="mt-3 text-balance font-serif text-4xl leading-tight tracking-tight md:text-5xl"
+            className="mt-3 text-balance font-semibold text-4xl leading-tight tracking-tight md:text-5xl"
           >
             Do catálogo à Realidade Aumentada, sem esforço da sua equipa.
           </h2>
