@@ -1,15 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Instrument_Serif } from 'next/font/google'
+import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import { CookieBanner } from '@/components/cookie-banner'
 import './globals.css'
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
-const instrumentSerif = Instrument_Serif({
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
+  variable: '--font-cormorant',
 })
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-PT" className={`${geist.variable} ${instrumentSerif.variable}`}>
+    <html lang="pt-PT" className={`${manrope.variable} ${cormorant.variable}`}>
       <body className="antialiased">
         {children}
         <CookieBanner />

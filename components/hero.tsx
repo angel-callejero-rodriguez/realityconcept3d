@@ -13,7 +13,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 text-center md:pt-28">
         <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
           <span className="size-1.5 rounded-full bg-foreground" aria-hidden="true" />
-          Realidade Aumentada para mobiliário de luxo
+          Realidade Aumentada para mobiliário
         </p>
 
         <h1 className="mx-auto mt-8 max-w-4xl text-balance font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
