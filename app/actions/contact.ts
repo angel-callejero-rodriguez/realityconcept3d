@@ -33,14 +33,41 @@ export async function submitContact(
     return { status: 'error', message: 'Verifique os campos assinalados.', errors }
   }
 
-  // Ligar aqui um serviço de email (ex.: Resend) ou base de dados para receber os pedidos.
-  console.log('[contact] Novo pedido de demonstração', {
-    name,
-    company,
-    email,
-    storeUrl: String(formData.get('store') ?? '').slice(0, 200),
-    catalogSize: String(formData.get('catalog') ?? ''),
-  })
+  // Envio real do email através do Web3Forms
+  try {
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: '457992ff-aa59-4127-adbc-0e447992e5d3', // A tua chave inserida aqui
+        subject: `Novo Pedido de Demo - ${company}`,
+        from_name: 'Site Reality Concept 3D',
+        replyto: email,
+        name: name,
+        email: email,
+        message: `
+Recebeste um novo pedido de demonstração através do site!
+
+DADOS DO CLIENTE:
+Nome: ${name}
+Empresa/Loja: ${company}
+Email: ${email}
+
+DETALHES DA LOJA:
+Website: ${String(formData.get('store') ?? 'Não preenchido')}
+Nº de Produtos: ${String(formData.get('catalog') ?? 'Não selecionado')}
+
+MENSAGEM:
+${message || 'Sem mensagem adicional.'}
+        `,
+      }),
+    });
+  } catch (error) {
+    return { status: 'error', message: 'Ocorreu um erro ao enviar. Tente novamente.' }
+  }
 
   return {
     status: 'success',
