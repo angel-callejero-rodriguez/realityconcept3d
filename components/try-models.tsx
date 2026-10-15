@@ -11,6 +11,13 @@ const models = [
     file: 'cadeira.glb',
     icon: Armchair,
   },
+  {
+    id: 'mesa',
+    name: 'Mesa de Centro',
+    description: 'Analise as proporções da mesa e as texturas realistas aplicadas à superfície. Experimente num espaço amplo',
+    file: 'mesa.glb',
+    icon: Box,
+  },
 ]
 
 export function TryModels() {
