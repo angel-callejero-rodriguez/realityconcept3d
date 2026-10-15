@@ -13,8 +13,8 @@ const models = [
   },
   {
     id: 'mesa',
-    name: 'Mesa de Centro',
-    description: 'Analise as proporções da mesa e as texturas realistas aplicadas à superfície. Experimente num espaço amplo',
+    name: 'Mesa de Café',
+    description: 'Analise as proporções da mesa e as texturas realistas aplicadas à superfície.',
     file: 'mesa.glb',
     icon: Box,
   },
