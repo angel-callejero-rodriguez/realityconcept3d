@@ -33,7 +33,7 @@ export async function submitContact(
     return { status: 'error', message: 'Verifique os campos assinalados.', errors }
   }
 
-  // Envio real do email através do Web3Forms
+  // Envio real do email através do Web3Forms (Modo Detetive)
   try {
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -41,7 +41,6 @@ export async function submitContact(
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      cache: 'no-store', // 1. ISTO RESOLVE O PROBLEMA DE CACHE DO NEXT.JS
       body: JSON.stringify({
         access_key: '457992ff-aa59-4127-adbc-0e447992e5d3', 
         subject: `Novo Pedido de Demo - ${company}`,
@@ -63,15 +62,21 @@ ${message || 'Sem mensagem adicional.'}
       }),
     });
 
-    const data = await response.json();
-
-    // 2. ISTO AVISA SE O WEB3FORMS BLOQUEAR
-    if (!data.success) {
-      return { status: 'error', message: `Erro no servidor: ${data.message}` };
+    // 1. Verificar se o servidor do Web3Forms foi abaixo (Devolve erro 500/502)
+    if (!response.ok) {
+      return { status: 'error', message: `O Web3Forms falhou (HTTP ${response.status}).` };
     }
 
-  } catch (error) {
-    return { status: 'error', message: 'Falha na ligação à internet.' };
+    const data = await response.json();
+
+    // 2. Verificar se a tua chave ou dados foram rejeitados
+    if (!data.success) {
+      return { status: 'error', message: `O Web3Forms recusou: ${data.message}` };
+    }
+
+  } catch (error: any) {
+    // 3. APANHAR O ERRO EXATO DA VERCEL!
+    return { status: 'error', message: `Erro Vercel: ${error.message}` };
   }
 
   return {
