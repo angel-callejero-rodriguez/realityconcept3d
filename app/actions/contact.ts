@@ -35,38 +35,43 @@ export async function submitContact(
 
   // Envio real do email através do Web3Forms
   try {
-    await fetch('https://api.web3forms.com/submit', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
+      cache: 'no-store', // 1. ISTO RESOLVE O PROBLEMA DE CACHE DO NEXT.JS
       body: JSON.stringify({
-        access_key: '457992ff-aa59-4127-adbc-0e447992e5d3', // A tua chave inserida aqui
+        access_key: '457992ff-aa59-4127-adbc-0e447992e5d3', 
         subject: `Novo Pedido de Demo - ${company}`,
         from_name: 'Site Reality Concept 3D',
-        replyto: email,
         name: name,
-        email: email,
+        email: email, 
         message: `
-Recebeste um novo pedido de demonstração através do site!
+Pedido recebido do site!
 
-DADOS DO CLIENTE:
-Nome: ${name}
-Empresa/Loja: ${company}
-Email: ${email}
-
-DETALHES DA LOJA:
-Website: ${String(formData.get('store') ?? 'Não preenchido')}
-Nº de Produtos: ${String(formData.get('catalog') ?? 'Não selecionado')}
+NOME: ${name}
+EMPRESA: ${company}
+EMAIL DE CONTACTO: ${email}
+SITE DA LOJA: ${String(formData.get('store') ?? 'Não preenchido')}
+Nº PRODUTOS: ${String(formData.get('catalog') ?? 'Não selecionado')}
 
 MENSAGEM:
 ${message || 'Sem mensagem adicional.'}
         `,
       }),
     });
+
+    const data = await response.json();
+
+    // 2. ISTO AVISA SE O WEB3FORMS BLOQUEAR
+    if (!data.success) {
+      return { status: 'error', message: `Erro no servidor: ${data.message}` };
+    }
+
   } catch (error) {
-    return { status: 'error', message: 'Ocorreu um erro ao enviar. Tente novamente.' }
+    return { status: 'error', message: 'Falha na ligação à internet.' };
   }
 
   return {
