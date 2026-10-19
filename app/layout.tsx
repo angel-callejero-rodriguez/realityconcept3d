@@ -1,61 +1,54 @@
-import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import { CookieBanner } from '@/components/cookie-banner'
-import './globals.css'
+import type { Metadata, Viewport } from "next";
+import { Manrope, Cormorant_Garamond } from "next/font/google";
+import { CookieBanner } from "@/components/cookie-banner";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-
+const sans = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
+const serif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-editorial",
+});
 export const metadata: Metadata = {
+  metadataBase: new URL("https://realityconcept3d.com"),
   title: {
-    default: 'Reality Concept 3D — Realidade Aumentada para Mobiliário',
-    template: '%s | Reality Concept 3D',
+    default: "Reality Concept 3D — Do ecrã. Para a vida.",
+    template: "%s | Reality Concept 3D",
   },
   description:
-    'Realidade Aumentada nativa para lojas de mobiliário e decoração de luxo. Os seus clientes testam os móveis em casa, sem instalar aplicações. Mais vendas, menos devoluções.',
-  keywords: [
-    'realidade aumentada',
-    'AR mobiliário',
-    'modelação 3D',
-    'loja de móveis',
-    'decoração de luxo',
-    'e-commerce',
-  ],
+    "Modelação 3D e Realidade Aumentada para marcas de mobiliário e interiores. Os seus produtos, no espaço de quem os vai escolher.",
   openGraph: {
-    title: 'Reality Concept 3D',
+    title: "Reality Concept 3D — Do ecrã. Para a vida.",
     description:
-      'Ajudamos marcas de mobiliário a duplicar vendas e reduzir devoluções com Realidade Aumentada nativa.',
-    locale: 'pt_PT',
-    type: 'website',
-    images: ['/images/demo-poster.png'],
-  },
-  icons: {
-    icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      "Uma nova dimensão para a sua marca. Modelação 3D e Realidade Aumentada para mobiliário e interiores.",
+    locale: "pt_PT",
+    type: "website",
+    images: [
+      {
+        url: "/images/social-cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Reality Concept 3D — Do ecrã. Para a vida.",
+      },
     ],
-    apple: '/apple-icon.png',
   },
-}
-
+  twitter: { card: "summary_large_image" },
+  icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
+};
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#0e0f11',
-}
-
+  colorScheme: "light",
+  themeColor: "#f0eee8",
+};
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-PT" className={`${inter.variable} dark bg-background`}>
-      <body className="antialiased">
+    <html lang="pt-PT" className={`${sans.variable} ${serif.variable}`}>
+      <body>
         {children}
         <CookieBanner />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
-  )
+  );
 }

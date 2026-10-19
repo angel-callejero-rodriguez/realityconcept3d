@@ -1,60 +1,65 @@
-'use client'
+"use client";
 
-import { useSyncExternalStore, useState } from 'react'
-import Link from 'next/link'
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 
-const STORAGE_KEY = 'rc3d-cookie-consent'
-
-function subscribe() {
-  return () => {}
+const STORAGE_KEY = "rc3d-cookie-consent";
+export function CookieBanner() {
+  const [choice, setChoice] = useState<string | null>("loading");
+  const consent = useRef(false);
+  consent.current = choice === "accepted";
+  useEffect(() => {
+    try {
+      setChoice(localStorage.getItem(STORAGE_KEY));
+    } catch {
+      setChoice(null);
+    }
+    const reopen = () => setChoice(null);
+    window.addEventListener("rc3d:cookie-preferences", reopen);
+    return () => window.removeEventListener("rc3d:cookie-preferences", reopen);
+  }, []);
+  const choose = (value: "accepted" | "essential") => {
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch {
+      /* The current-page choice still applies when storage is unavailable. */
+    }
+    setChoice(value);
+  };
+  return (
+    <>
+      {choice === null && (
+        <div
+          className="cookie-banner"
+          role="region"
+          aria-label="Preferências de privacidade"
+        >
+          <span className="eyebrow">UM PEQUENO DETALHE.</span>
+          <p>
+            Usamos armazenamento essencial e, se aceitar, análise de navegação
+            para melhorar o site. <Link href="/cookies">Saber mais</Link>
+          </p>
+          <div>
+            <button onClick={() => choose("essential")}>Só essenciais</button>
+            <button onClick={() => choose("accepted")}>Aceitar todos</button>
+          </div>
+        </div>
+      )}
+      {choice === "accepted" && process.env.NODE_ENV === "production" && (
+        <Analytics beforeSend={(event) => (consent.current ? event : null)} />
+      )}
+    </>
+  );
 }
 
-export function CookieBanner() {
-  const stored = useSyncExternalStore(
-    subscribe,
-    () => localStorage.getItem(STORAGE_KEY),
-    () => 'ssr',
-  )
-  const [dismissed, setDismissed] = useState(false)
-
-  if (stored !== null || dismissed) return null
-
-  const choose = (value: 'accepted' | 'essential') => {
-    localStorage.setItem(STORAGE_KEY, value)
-    setDismissed(true)
-  }
-
+export function CookiePreferences() {
   return (
-    <div
-      role="dialog"
-      aria-live="polite"
-      aria-label="Consentimento de cookies"
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-xl rounded-2xl border border-border bg-popover/95 p-5 shadow-2xl backdrop-blur-xl"
+    <button
+      className="cookie-preferences"
+      onClick={() => window.dispatchEvent(new Event("rc3d:cookie-preferences"))}
     >
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        Utilizamos cookies essenciais para o funcionamento do site e, com o seu consentimento,
-        cookies de análise para melhorar a sua experiência. Saiba mais na nossa{' '}
-        <Link href="/cookies" className="text-foreground underline underline-offset-4">
-          Política de Cookies
-        </Link>
-        .
-      </p>
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
-        <button
-          type="button"
-          onClick={() => choose('essential')}
-          className="h-9 rounded-full border border-border px-4 text-sm hover:bg-muted"
-        >
-          Apenas essenciais
-        </button>
-        <button
-          type="button"
-          onClick={() => choose('accepted')}
-          className="h-9 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          Aceitar todos
-        </button>
-      </div>
-    </div>
-  )
+      Preferências de cookies
+    </button>
+  );
 }
