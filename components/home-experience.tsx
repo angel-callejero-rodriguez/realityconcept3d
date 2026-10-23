@@ -282,13 +282,13 @@ export function HomeExperience() {
                 <button
                   className="comparison-expand"
                   aria-label="Abrir modelo 3D em ecrã completo"
-                  onClick={() => setModel("atelier")}
+                  onClick={() => setModel("cadeiracouro")}
                 >
                   <Expand size={17} />
                 </button>
                 <button
                   className="comparison-ar"
-                  onClick={() => setModel("atelier")}
+                  onClick={() => setModel("cadeiracouro")}
                 >
                   <QrCode size={16} /> Ver no meu espaço
                 </button>
@@ -301,7 +301,7 @@ export function HomeExperience() {
           <div className="section-action">
             <button
               className="button button-secondary"
-              onClick={() => setModel("atelier")}
+              onClick={() => setModel("cadeiracouro")}
             >
               Abrir a experiência completa <ArrowRight size={16} />
             </button>

@@ -12,7 +12,10 @@ export function Hero() {
             MODELAÇÃO 3D E REALIDADE AUMENTADA PARA MOBILIÁRIO
           </p>
           <h1 id="hero-title">
-            Os seus móveis, vistos de todos os ângulos. No espaço de quem os vai
+            Os seus móveis, vistos de todos os ângulos.                    
+          
+          
+            No espaço de quem os vai
             escolher.
           </h1>
           <p className="hero-description">

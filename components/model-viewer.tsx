@@ -4,7 +4,7 @@ import { createElement, useEffect, useRef, useState } from "react";
 import type { ModelViewerElement } from "@google/model-viewer";
 import { RotateCcw } from "lucide-react";
 
-export type ModelKind = "atelier" | "lounge" | "mesa" | "cadeira";
+export type ModelKind = "atelier" | "lounge" | "mesa" | "cadeira" | "cadeiracouro";
 export const modelInfo = {
   atelier: {
     src: "/models/atelier-chair.glb",
