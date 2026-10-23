@@ -30,6 +30,12 @@ export const modelInfo = {
     poster: "/images/cadeira-poster.webp",
     orbit: "-28deg 76deg 105%",
   },
+  cadeiracouro: {
+    src: "https://ar.realityconcept3d.com/cadeiracouro.glb", 
+    name: "Cadeira de Couro",
+    poster: "/images/atelier-chair-poster.webp", // Podes mudar para a imagem da cadeira de couro mais tarde
+    orbit: "0deg 75deg 105%"
+  },
 };
 
 export function ModelViewer({
