@@ -7,6 +7,7 @@ import { Hero } from "./hero";
 import { RoiCalculator } from "./roi-calculator";
 import { InteractiveProduct } from "./interactive-product";
 import type { ModelKind } from "./model-viewer";
+import { isModelKind } from "@/lib/rc3d";
 
 const ExperienceDialog = dynamic(
   () => import("./experience-dialog").then((module) => module.ExperienceDialog),
@@ -60,13 +61,7 @@ export function HomeExperience() {
 
   useEffect(() => {
     const incoming = new URLSearchParams(window.location.search).get("modelo");
-    if (
-      incoming === "atelier" ||
-      incoming === "lounge" ||
-      incoming === "mesa" ||
-      incoming === "cadeira"
-    )
-      setModel(incoming as ModelKind);
+    if (isModelKind(incoming)) setModel(incoming);
 
     const observer = new IntersectionObserver(
       (entries) =>

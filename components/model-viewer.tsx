@@ -3,6 +3,7 @@
 import { createElement, useEffect, useRef, useState } from "react";
 import type { ModelViewerElement } from "@google/model-viewer";
 import { RotateCcw } from "lucide-react";
+import { RC3D_ORIGIN } from "@/lib/rc3d";
 
 export type ModelKind = "atelier" | "lounge" | "mesa" | "cadeira" | "cadeiracouro";
 export const modelInfo = {
@@ -31,7 +32,7 @@ export const modelInfo = {
     orbit: "-28deg 76deg 105%",
   },
   cadeiracouro: {
-    src: "https://ar.realityconcept3d.com/cadeiracouro.glb", 
+    src: `${RC3D_ORIGIN}/cadeiracouro.glb`,
     name: "Cadeira de Couro",
     poster: "/images/atelier-chair-poster.webp", // Podes mudar para a imagem da cadeira de couro mais tarde
     orbit: "0deg 75deg 105%"

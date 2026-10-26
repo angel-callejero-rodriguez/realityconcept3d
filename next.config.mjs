@@ -14,6 +14,11 @@ const nextConfig = {
           { key: "Permissions-Policy", value: "microphone=(), geolocation=()" },
         ],
       },
+      {
+        // Demos privadas das lojas: nunca indexadas
+        source: "/demo/:token",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
 };

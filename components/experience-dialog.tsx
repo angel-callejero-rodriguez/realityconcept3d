@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, ExternalLink } from "lucide-react";
 import type { ModelKind } from "./model-viewer";
+import { SERVER_MODEL_ID, viewerUrl } from "@/lib/rc3d";
 
 export function ExperienceDialog({
   kind,
@@ -16,6 +17,7 @@ export function ExperienceDialog({
   // Como agora usamos a iFrame, precisamos de saber quando ela acaba de carregar
   // para removermos uma cor de fundo de "loading" ou mostrar a interface.
   const [isLoaded, setIsLoaded] = useState(false);
+  const serverUrl = viewerUrl(SERVER_MODEL_ID[kind]);
 
   useEffect(() => {
     const element = dialog.current;
@@ -121,7 +123,7 @@ export function ExperienceDialog({
           )}
           
           <iframe
-            src={`https://ar.realityconcept3d.com/?modelo=${kind}.glb`}
+            src={serverUrl}
             onLoad={() => setIsLoaded(true)}
             style={{ 
               width: '100%', 
@@ -144,20 +146,14 @@ export function ExperienceDialog({
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
+          {/* O crédito de cada modelo aparece dentro do visualizador (vem do registo do servidor) */}
           <p className="demo-credit" style={{ margin: 0, fontSize: '0.75rem', color: '#888' }}>
-            Modelo de demonstração ·{" "}
-            {kind === "atelier"
-              ? "Mid Century Lounge Chair — Kuutti Siitonen / Poly Haven, CC0"
-              : kind === "lounge"
-                ? "Sheen Chair — Wayfair / Eric Chadwick, CC0"
-                : kind === "cadeira"
-                  ? "Office Chair Modern — thethieme, CC BY 4.0"
-                  : "Coffee Table Round 01 — Poly Haven, CC0"}
+            Modelo de demonstração
           </p>
-          
+
           {/* Botão de fallback caso o cliente queira abrir o site do servidor à parte */}
-          <a 
-            href={`https://ar.realityconcept3d.com/?modelo=${kind}`} 
+          <a
+            href={serverUrl}
             target="_blank" 
             rel="noopener noreferrer"
             style={{ 
