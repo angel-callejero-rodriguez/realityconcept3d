@@ -1,3 +1,7 @@
+// Quando o vídeo chegar: coloque-o em /public/demo-video.mp4 e mude para "/demo-video.mp4".
+// Enquanto for null, mostra uma caixa "disponível em breve" em vez de um leitor vazio.
+const VIDEO_SRC: string | null = null;
+
 export function RoiCalculator() {
   return (
     <section
@@ -28,21 +32,50 @@ export function RoiCalculator() {
             backgroundColor: "#111"
           }}
         >
-          {/* 
-            OPÇÃO A: Ficheiro MP4 (Recomendado) 
-            Coloque o seu vídeo na pasta "public" com o nome "demo-video.mp4" 
+          {/*
+            OPÇÃO A: Ficheiro MP4 (Recomendado)
+            Coloque o seu vídeo na pasta "public" com o nome "demo-video.mp4"
           */}
-          <video
-            controls
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
-          >
-            <source src="/demo-video.mp4" type="video/mp4" />
-            O seu navegador não suporta a reprodução de vídeos.
-          </video>
+          {VIDEO_SRC ? (
+            <video
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
+            >
+              <source src={VIDEO_SRC} type="video/mp4" />
+              O seu navegador não suporta a reprodução de vídeos.
+            </video>
+          ) : (
+            <div
+              style={{
+                aspectRatio: "16/9",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "16px",
+                padding: "24px",
+                textAlign: "center",
+                color: "#fffdf7",
+              }}
+            >
+              <p className="eyebrow" style={{ margin: 0, color: "#c9b9a3" }}>
+                VÍDEO DE DEMONSTRAÇÃO
+              </p>
+              <p style={{ margin: 0, fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}>
+                Disponível em breve
+              </p>
+              <p style={{ margin: 0, maxWidth: "420px", color: "#b8b3a7" }}>
+                Enquanto isso, experimente um modelo ao vivo: rode a peça e veja-a na sua sala.
+              </p>
+              <a href="#modelos" className="button button-dark-outline">
+                Experimentar um modelo ao vivo
+              </a>
+            </div>
+          )}
 
           {/* 
             OPÇÃO B: Link do YouTube 
