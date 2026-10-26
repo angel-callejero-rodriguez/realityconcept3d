@@ -54,6 +54,34 @@ export default async function DemoPage(props: PageProps<"/demo/[token]">) {
         </button>
       </div>
 
+      {demo.compare && demo.compare.length > 0 && (
+        <section style={{ marginTop: 48, maxWidth: 640 }}>
+          <h2 style={{ fontSize: "1.2rem", margin: "0 0 12px" }}>
+            O que mudou em relação ao vosso modelo atual
+          </h2>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 15 }}>
+            <thead>
+              <tr style={{ textAlign: "left", color: "#888", fontSize: 12 }}>
+                <th style={{ padding: "8px 0", fontWeight: 600 }} />
+                <th style={{ padding: "8px 12px", fontWeight: 600 }}>HOJE</th>
+                <th style={{ padding: "8px 0", fontWeight: 600, color: "#B0543D" }}>
+                  CONNOSCO
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {demo.compare.map((row) => (
+                <tr key={row.label} style={{ borderTop: "1px solid #e5e2da" }}>
+                  <td style={{ padding: "10px 0", color: "#555" }}>{row.label}</td>
+                  <td style={{ padding: "10px 12px" }}>{row.before}</td>
+                  <td style={{ padding: "10px 0", fontWeight: 600 }}>{row.after}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
       <section style={{ marginTop: 48, maxWidth: 640 }}>
         <h2 style={{ fontSize: "1.2rem", margin: "0 0 8px" }}>
           Como ficaria no vosso site
