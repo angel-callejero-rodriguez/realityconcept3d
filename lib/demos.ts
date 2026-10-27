@@ -1,7 +1,10 @@
-// Demos privadas para lojas. Os tokens NÃO ficam no código (o repo pode ser público):
-// vêm da variável de ambiente RC3D_DEMOS na Vercel, por exemplo
-//   RC3D_DEMOS={"k7x2...":{"store":"Stylish Club","product":"Mesa de centro","model":"9f3c2a7d1e8b4c6a"}}
-// "model" é o id do modelo no rc3d-server (público em models.json ou privado em m/<id>.json).
+import { RC3D_ORIGIN } from "@/lib/rc3d";
+
+// Demos privadas para lojas. Cada demo é um ficheiro no rc3d-server: d/<token>.json
+//   {"store":"Stylish Club","product":"Mesa de centro","model":"9f3c2a7d1e8b4c6a"}
+// "model" é o id do modelo no servidor (público em models.json ou privado em m/<id>.json).
+// Os tokens não ficam neste repo e não há nenhuma lista pública de demos.
+// A variável RC3D_DEMOS (mesmo formato, várias demos num JSON) continua a funcionar como alternativa.
 
 // "compare" (opcional): linhas "antes / depois" quando a loja já tem 3D, ex.
 //   "compare":[{"label":"Tamanho do ficheiro","before":"4,0 MB","after":"1,7 MB"}]
@@ -12,6 +15,8 @@ export type Demo = {
   model: string;
   compare?: Comparison[];
 };
+
+const TOKEN_PATTERN = /^[a-z0-9]{8,64}$/;
 
 function isComparison(value: unknown): value is Comparison {
   if (!value || typeof value !== "object") return false;
@@ -36,7 +41,20 @@ function isDemo(value: unknown): value is Demo {
   );
 }
 
-export function findDemo(token: string): Demo | null {
+async function fromServer(token: string): Promise<Demo | null> {
+  try {
+    const response = await fetch(`${RC3D_ORIGIN}/d/${token}.json`, {
+      next: { revalidate: 60 },
+    });
+    if (!response.ok) return null;
+    const demo: unknown = await response.json();
+    return isDemo(demo) ? demo : null;
+  } catch {
+    return null;
+  }
+}
+
+function fromEnv(token: string): Demo | null {
   let demos: unknown;
   try {
     demos = JSON.parse(process.env.RC3D_DEMOS ?? "{}");
@@ -47,4 +65,9 @@ export function findDemo(token: string): Demo | null {
   if (!demos || typeof demos !== "object" || !Object.hasOwn(demos, token)) return null;
   const demo = (demos as Record<string, unknown>)[token];
   return isDemo(demo) ? demo : null;
+}
+
+export async function findDemo(token: string): Promise<Demo | null> {
+  if (!TOKEN_PATTERN.test(token)) return null;
+  return (await fromServer(token)) ?? fromEnv(token);
 }

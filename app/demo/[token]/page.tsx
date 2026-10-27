@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function DemoPage(props: PageProps<"/demo/[token]">) {
   const { token } = await props.params;
-  const demo = findDemo(token);
+  const demo = await findDemo(token);
   if (!demo) notFound();
 
   return (
