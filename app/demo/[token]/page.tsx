@@ -40,6 +40,21 @@ export default async function DemoPage(props: PageProps<"/demo/[token]">) {
         para a ver no tamanho real, no seu espaço. Esta página é privada e foi
         feita só para a {demo.store}.
       </p>
+      {demo.note && (
+        <p
+          style={{
+            margin: "-16px 0 32px",
+            maxWidth: 640,
+            padding: "10px 14px",
+            borderLeft: "3px solid #B0543D",
+            background: "#f2f0ea",
+            color: "#444",
+            fontSize: 14,
+          }}
+        >
+          {demo.note}
+        </p>
+      )}
 
       {/* O mesmo código que a loja colaria no seu site: */}
       <div

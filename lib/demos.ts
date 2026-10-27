@@ -9,10 +9,12 @@ import { RC3D_ORIGIN } from "@/lib/rc3d";
 // "compare" (opcional): linhas "antes / depois" quando a loja já tem 3D, ex.
 //   "compare":[{"label":"Tamanho do ficheiro","before":"4,0 MB","after":"1,7 MB"}]
 export type Comparison = { label: string; before: string; after: string };
+// "note" (opcional): aviso por baixo do título, ex. quando a demo usa um modelo de exemplo.
 export type Demo = {
   store: string;
   product: string;
   model: string;
+  note?: string;
   compare?: Comparison[];
 };
 
@@ -36,6 +38,7 @@ function isDemo(value: unknown): value is Demo {
     typeof demo.product === "string" &&
     typeof demo.model === "string" &&
     /^[a-z0-9][a-z0-9-]{0,63}$/.test(demo.model) &&
+    (demo.note === undefined || typeof demo.note === "string") &&
     (demo.compare === undefined ||
       (Array.isArray(demo.compare) && demo.compare.every(isComparison)))
   );
