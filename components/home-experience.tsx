@@ -339,7 +339,7 @@ export function HomeExperience() {
         <div className="page-container" data-reveal>
           <p className="eyebrow">DÊ UMA NOVA DIMENSÃO À SUA MARCA</p>
           <h2 id="cta-title">
-            O próximo produto que ganha vida
+            O próximo produto que ganha vida{" "}
             <br />
             pode ser o seu.
           </h2>
