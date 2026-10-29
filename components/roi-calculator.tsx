@@ -1,6 +1,7 @@
-// Quando o vídeo chegar: coloque-o em /public/demo-video.mp4 e mude para "/demo-video.mp4".
-// Enquanto for null, mostra uma caixa "disponível em breve" em vez de um leitor vazio.
-const VIDEO_SRC: string | null = null;
+// Vídeo em /public/demo-video.mp4 (comprimido para a web: 1080p, ~11 MB, arranque rápido).
+// Com null, mostra uma caixa "disponível em breve" em vez de um leitor vazio.
+const VIDEO_SRC: string | null = "/demo-video.mp4";
+const VIDEO_POSTER = "/images/demo-video-poster.jpg";
 
 export function RoiCalculator() {
   return (
@@ -37,12 +38,12 @@ export function RoiCalculator() {
             Coloque o seu vídeo na pasta "public" com o nome "demo-video.mp4"
           */}
           {VIDEO_SRC ? (
+            // Sem autoplay: o vídeo tem som e 82 s, e assim só descarrega quando a pessoa carrega em play.
             <video
               controls
-              autoPlay
-              muted
-              loop
               playsInline
+              preload="metadata"
+              poster={VIDEO_POSTER}
               style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
             >
               <source src={VIDEO_SRC} type="video/mp4" />
