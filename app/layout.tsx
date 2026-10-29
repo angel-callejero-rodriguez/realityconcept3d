@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Cormorant_Garamond } from "next/font/google";
 import { CookieBanner } from "@/components/cookie-banner";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const sans = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
@@ -11,7 +12,7 @@ const serif = Cormorant_Garamond({
   variable: "--font-editorial",
 });
 export const metadata: Metadata = {
-  metadataBase: new URL("https://realityconcept3d.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Reality Concept 3D — Do ecrã. Para a vida.",
     template: "%s | Reality Concept 3D",
