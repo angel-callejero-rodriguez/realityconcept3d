@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { LegalPage } from '@/components/legal-page'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/privacidade',
   title: 'Política de Privacidade',
   description: 'Como a Reality Concept 3D recolhe, utiliza e protege os seus dados pessoais.',
-}
+})
 
 export default function PrivacyPage() {
   return (

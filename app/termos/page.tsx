@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { LegalPage } from '@/components/legal-page'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/termos',
   title: 'Termos de Serviço',
   description: 'Termos e condições de utilização dos serviços Reality Concept 3D.',
-}
+})
 
 export default function TermsPage() {
   return (

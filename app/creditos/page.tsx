@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
-export const metadata: Metadata = { title: "Créditos" };
+import { pageMetadata } from "@/lib/site";
+export const metadata: Metadata = pageMetadata({
+  path: "/creditos",
+  title: "Créditos",
+  description:
+    "Autores, licenças e fontes dos modelos 3D de demonstração apresentados no site da Reality Concept 3D.",
+});
 export default function CreditsPage() {
   return (
     <LegalPage

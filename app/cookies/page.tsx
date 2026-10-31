@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/cookies",
   title: "Política de Cookies",
   description:
     "Informação sobre a utilização de cookies no website da Reality Concept 3D.",
-};
+});
 
 export default function CookiesPage() {
   return (

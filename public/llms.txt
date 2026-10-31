@@ -1,0 +1,21 @@
+# Reality Concept 3D
+
+> Modelação 3D e Realidade Aumentada para marcas e lojas de mobiliário e interiores em Portugal. Criamos modelos 3D das peças a partir de fotografias e medidas e integramo-los na página do produto, para o cliente rodar a peça e experimentá-la no seu espaço com AR, diretamente no navegador.
+
+## Como funciona
+
+1. A marca partilha fotografias de vários ângulos, medidas e referências de materiais. Não precisa de ter ficheiros 3D.
+2. Criamos a versão 3D (forma, texturas e acabamentos). A equipa da marca revê e aprova o modelo antes da publicação.
+3. Integramos o visualizador na página do produto (Shopify, WooCommerce ou website à medida). Funciona no navegador, sem aplicação; a Realidade Aumentada está disponível em iPhone e Android compatíveis.
+
+Preços: propostas à medida, segundo a dimensão do catálogo e o nível de detalhe.
+
+## Páginas
+
+- [Página inicial](https://www.realityconcept3d.com/): serviço, demonstração ao vivo e perguntas frequentes
+- [Marcar uma demonstração](https://www.realityconcept3d.com/contacto): formulário de contacto
+- [Créditos](https://www.realityconcept3d.com/creditos): origem dos modelos de demonstração
+
+## Contacto
+
+- Email: rodriguez@realityconcept3d.com

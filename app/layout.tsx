@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: "Reality Concept 3D — Do ecrã. Para a vida.",
     description:
       "Uma nova dimensão para a sua marca. Modelação 3D e Realidade Aumentada para mobiliário e interiores.",
+    siteName: "Reality Concept 3D",
     locale: "pt_PT",
     type: "website",
     images: [
