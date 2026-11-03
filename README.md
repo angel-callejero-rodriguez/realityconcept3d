@@ -1,7 +1,5 @@
 # Reality Concept 3D
 
-Redesigned from [angel-callejero-rodriguez/realityconcept3d](https://github.com/angel-callejero-rodriguez/realityconcept3d). The original commit history is preserved.
-
 A Portuguese-language website for furniture 3D modelling and augmented reality. Built with Next.js App Router, React, TypeScript, Tailwind 4, and Google's model-viewer.
 
 ## Run locally
