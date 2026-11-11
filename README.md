@@ -1,51 +1,87 @@
 # Reality Concept 3D
 
-A Portuguese-language website for furniture 3D modelling and augmented reality. Built with Next.js App Router, React, TypeScript, Tailwind 4, and Google's model-viewer.
+> 🇵🇹 Site da Reality Concept 3D, um estúdio do Porto que leva os móveis das lojas para 3D e realidade aumentada.
+
+**Live:** [realityconcept3d.com](https://www.realityconcept3d.com)
+
+Reality Concept 3D is a small startup from Porto, Portugal. We turn furniture stores' products into 3D models that shoppers can rotate on the product page and, on a phone, place in their own room at real size with augmented reality (AR).
+
+This repository is the company website: the marketing site, the contact flow and the private demo pages we build for each store we talk to.
+
+![Reality Concept 3D website](public/images/social-cover.jpg)
+
+## What it does
+
+- **Interactive 3D on the page.** Furniture models load on click, rotate with drag or keyboard and switch between real material variants.
+- **AR on any phone.** One button opens WebXR, Android Scene Viewer or iPhone Quick Look. Models are locked to real-world scale, so a 79 cm chair stays 79 cm.
+- **Desktop to phone handoff.** On a computer, the AR button shows a QR code that opens the same model on the phone.
+- **Private store demos.** `/demo/<token>` pages show a store its own product in 3D and AR. Tokens are random, the pages are `noindex` and they are not linked anywhere.
+- **Contact flow.** A validated enquiry form with timeout and retry states.
+- **Privacy by default.** Cookie consent with preferences; analytics only load after consent.
+- **Search ready.** `robots.txt`, sitemap and canonical URLs.
+
+## How it fits together
+
+```
+ realityconcept3d.com (this repo)          ar.realityconcept3d.com (rc3d-server)
+ ────────────────────────────────          ─────────────────────────────────────
+ Next.js site on Vercel                    Static 3D/AR server on Vercel
+   • marketing pages        ── models ──▶    • .glb models + registry
+   • /demo/<token> pages    ── demos  ──▶    • demo data (d/<token>.json)
+   • contact form                            • embeddable widget for store sites
+```
+
+The 3D and AR server lives in its own repository, [rc3d-server](https://github.com/angel-callejero-rodriguez/rc3d-server). It also has a one-line widget that any store website (WooCommerce, Shopify, Squarespace or hand-made) can paste in.
+
+## Tech stack
+
+- **Next.js 16** (App Router), **React 19**, **TypeScript**
+- **Tailwind CSS 4**
+- **Google model-viewer** for 3D and AR
+- **Vercel** for hosting and analytics
+- **Web3Forms** for contact form delivery
+
+## Project structure
+
+| Path | What it is |
+|---|---|
+| `app/page.tsx` | Home page composition |
+| `app/demo/[token]/page.tsx` | Private store demo pages |
+| `app/contacto/` | Contact page |
+| `app/robots.ts`, `app/sitemap.ts` | Search engine files |
+| `components/hero.tsx` | Hero with click-to-activate 3D |
+| `components/home-experience.tsx` | Benefits, process, comparison demo, FAQ and model deep links |
+| `components/model-viewer.tsx` | Client-only 3D runtime, material variants, loading and error states |
+| `components/experience-dialog.tsx` | Accessible modal with device-aware AR and QR handoff |
+| `components/roi-calculator.tsx` | Demo video section (the file keeps its original name) |
+| `components/contact-form.tsx` | Contact form with validation, timeout and retry |
+| `components/cookie-banner.tsx` | Consent storage and preferences |
+| `lib/demos.ts` | Loads store demos from rc3d-server |
+| `app/globals.css` | Visual system, responsive and reduced-motion rules |
+| `docs/` | Design notes, asset credits and verification checklist |
 
 ## Run locally
 
-Requires Node.js 20.19+ (Node 24 used for verification).
+Requires Node.js 20.19 or newer.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. For a production preview:
+Open http://localhost:3000. For a production build:
 
 ```sh
 npm run build
 npm start
 ```
 
-The repository also includes an updated pnpm lockfile. TypeScript validation runs during production builds.
+AR needs HTTPS and a compatible phone, so test it on the deployed URL. A QR code generated on localhost only points to that computer.
 
-## Main files
+## Assets and credits
 
-- `app/page.tsx`: page composition.
-- `components/home-experience.tsx`: benefits, process, comparison demo, FAQ, and model deep links.
-- `components/hero.tsx`: two-column hero with click-to-activate 3D.
-- `components/interactive-product.tsx`: explicit activation and rotation, with normal page scrolling.
-- `components/roi-calculator.tsx`: illustrative conversion scenarios calculated locally.
-- `app/contacto/page.tsx`: dedicated demonstration enquiry page.
-- `components/model-viewer.tsx`: client-only 3D runtime, real material variants, loading/error states.
-- `components/experience-dialog.tsx`: accessible native modal, device-aware AR, locally generated QR handoff.
-- `components/contact-form.tsx`: Web3Forms contact flow, browser validation, timeout and retry states.
-- `components/cookie-banner.tsx`: consent storage, preference controls, consent-gated production analytics.
-- `app/globals.css`: the visual system and responsive/reduced-motion rules.
+Demo furniture comes from open-licence sources (CC0 and CC BY) or was modelled for the company. Details are in [`docs/assets.md`](docs/assets.md) and on the site's [/creditos](https://www.realityconcept3d.com/creditos) page.
 
-## Content and integrations
+## Author
 
-The site preserves the existing Web3Forms public access key and business email. No new account or backend is required. Web3Forms sends the actual enquiry; its receiving account and delivery configuration remain external to this repository. Browser QA uses intercepted responses and does not send real enquiries.
-
-AR is provided by model-viewer through WebXR, Android Scene Viewer, and iOS Quick Look on supported devices. Desktop users get a QR code pointing to the current site with `?modelo=atelier` or `?modelo=mesa`. Open the deployed public URL for a QR code that can be reached by another device; a localhost QR code only points to that device's own localhost. Camera and AR hardware behaviour requires a compatible physical phone and HTTPS.
-
-The impact calculator is an illustrative scenario tool, not a promise of conversion or revenue. No Shopify or WooCommerce app, store connector, or customer account is implied by this marketing website.
-
-## Asset provenance
-
-See `docs/assets.md` and `/creditos` for model attribution and the generated architectural background. The visible furniture is explicitly labelled as demonstration content, not client work.
-
-## Verification
-
-Production build and TypeScript checking; visual browser inspection at desktop, tablet, and narrow mobile widths; model loading and material switching; non-blocking hero scrolling; 3D modals and QR handoff; deep links; Escape/focus restoration; mobile navigation; calculator and FAQ controls; contact form validation and mocked error/success; cookie preferences; legal pages; reduced-motion behaviour. The hero is still until clicked. Rotation then responds to drag or keyboard controls. Zoom is disabled across viewers. Actual email delivery and physical-device AR are external checks.
+Built by **Angel Rodriguez**, founder of Reality Concept 3D.

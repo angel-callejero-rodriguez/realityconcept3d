@@ -71,15 +71,12 @@ Plano até 31 de outubro:
 5. Criar uma página privada por loja com um endereço impossível de adivinhar (ex. `/demo/<token aleatório>`, não o nome da loja), `noindex`, fora do sitemap e de qualquer menu. Reutiliza o visualizador e o diálogo de AR. Sem tracking nem variantes nesta ronda.
 6. Testar cada demo no URL de produção num iPhone e num Android (3D, AR, QR) antes de enviar.
 7. Remover os números da calculadora de ROI do site. Esta e as demos são o único trabalho no site antes de 31/10.
-8. Levar uma hipótese de preço para a primeira chamada e observar a reação (é o teste de preço):
-   - Hipótese do fundador: 140€ por modelo + subscrição mensal. Com o modelador a ~100€/peça, a margem é de 40€ por peça (~400€ brutos num pacote de 10), antes de otimizar, testar, falar com a loja e corrigir. Margem curta: subir para 170-200€/peça ou negociar o modelador para 70-80€ com volume.
-   - Proposta concreta para testar: "10 peças por 1.500€ + 39€/mês, primeiro mês grátis".
-   - A subscrição (29-49€/mês) tem de pagar algo visível para a loja: alojamento e manutenção dos modelos, peças novas incluídas, ajuda a instalar, e no futuro estatísticas de uso do AR. Referência: soluções alojadas cobram 140-500 USD/mês, mas para lojas maiores (Framesixty, https://framesixty.com/ar-product-visualization/).
+8. Levar uma hipótese de preço para a primeira chamada e observar a reação (é o teste de preço). Os valores ficam fora deste documento.
+   - Modelo: preço por peça + subscrição mensal. A subscrição tem de pagar algo visível para a loja: alojamento e manutenção dos modelos, peças novas incluídas, ajuda a instalar, e no futuro estatísticas de uso do AR.
    - Leitura da reação: "sim" imediato = estava barato; silêncio ou recuo = estava caro. Registar a reação de cada loja.
 9. Enviar cada demo assim que essa estiver pronta (não esperar pelas três). Mensagem curta em português, para o email do Apollo: "fiz isto com o vosso [peça], vejam no telemóvel". Dizer na mensagem que a página é privada e só para eles, e incluir uma linha para a pessoa pedir para não receber mais emails.
 
-Risco e orçamento das demos: no máximo 300€ nesta ronda (3 × até 100€). Sketchfab primeiro (custo 0€ se for a mesma peça). Começar por uma loja só, a com o contacto mais forte no Apollo; enviar, esperar 3-4 dias, e depois decidir as outras duas. Mesmo com um "não", ficam o custo real por peça, o prazo do modelador e a primeira reação real de uma loja. Um único pacote de 10 peças paga as três demos várias vezes.
-
+Risco e orçamento das demos: orçamento limitado nesta ronda. Sketchfab primeiro (sem custo se for a mesma peça). Começar por uma loja só, a com o contacto mais forte no Apollo; enviar, esperar 3-4 dias, e depois decidir as outras duas. Mesmo com um "não", ficam o custo real por peça, o prazo do modelador e a primeira reação real de uma loja.
 Contacto: um canal por loja (o que se descobrir no passo 1), chamada 2 dias depois, um último seguimento uma semana depois. Sem resposta até 15/11 = loja não respondeu.
 
 Congelado: rc3d server, plugins Shopify/WooCommerce, contas de cliente, dashboard.
