@@ -18,7 +18,7 @@ This repository is the company website: the marketing site, the contact flow and
 - **Private store demos.** `/demo/<token>` pages show a store its own product in 3D and AR. Tokens are random, the pages are `noindex` and they are not linked anywhere.
 - **Contact flow.** A validated enquiry form with timeout and retry states.
 - **Privacy by default.** Cookie consent with preferences; analytics only load after consent.
-- **Search ready.** `robots.txt`, sitemap and canonical URLs.
+- **Search ready.** Per-page metadata, JSON-LD structured data (organization, service, FAQ), sitemap, `robots.txt` and `llms.txt` for AI search engines.
 
 ## How it fits together
 
