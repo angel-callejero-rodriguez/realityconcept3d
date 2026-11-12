@@ -51,6 +51,7 @@ export function SiteFooter() {
               <br />
               realityconcept3d.com
             </a>
+            <p>PORTO, PORTUGAL</p>
             <p>PORTUGUÊS · PT</p>
           </div>
         </div>

@@ -24,6 +24,7 @@ const jsonLd = {
       logo: `${SITE_URL}/apple-icon.png`,
       email: CONTACT_EMAIL,
       slogan: "Do ecrã. Para a vida.",
+      address: { "@type": "PostalAddress", addressLocality: "Porto", addressCountry: "PT" },
     },
     {
       "@type": "WebSite",
